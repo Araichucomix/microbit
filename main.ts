@@ -8,6 +8,10 @@ let ypos_char = 2
 led.plot(2, 2)
 let bool_prev = 0
 basic.forever(function () {
+    music.play(music.stringPlayable("B A F B A F B A ", 120), music.PlaybackMode.UntilDone)
+    music.play(music.stringPlayable("E D E E E E E E ", 240), music.PlaybackMode.UntilDone)
+})
+basic.forever(function () {
     velocity_y = input.rotation(Rotation.Pitch) / 200
     velocity_x = input.rotation(Rotation.Roll) / 200
     led.unplot(xpos_char, ypos_char)

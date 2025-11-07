@@ -8,8 +8,7 @@ let ypos_char = 2
 led.plot(2, 2)
 let bool_prev = 0
 basic.forever(function () {
-    music.play(music.stringPlayable("B A F B A F B A ", 120), music.PlaybackMode.UntilDone)
-    music.play(music.stringPlayable("E D E E E E E E ", 240), music.PlaybackMode.UntilDone)
+	
 })
 basic.forever(function () {
     velocity_y = input.rotation(Rotation.Pitch) / 200
@@ -17,6 +16,8 @@ basic.forever(function () {
     led.unplot(xpos_char, ypos_char)
     xpos_char = xpos_char + velocity_x
     ypos_char = ypos_char + velocity_y
+    xpos_char = Math.floor(xpos_char)
+    ypos_char = Math.floor(ypos_char)
     if (xpos_char < 0) {
         xpos_char = 0
     }
@@ -30,6 +31,17 @@ basic.forever(function () {
         ypos_char = 4
     }
     led.plot(xpos_char, ypos_char)
+    if (bull_x == xpos_char && bull_y == ypos_char) {
+        while (true) {
+            basic.showLeds(`
+                # # # # #
+                # # # # #
+                # # # # #
+                # # # # #
+                # # # # #
+                `)
+        }
+    }
 })
 basic.forever(function () {
     if (bool_prev == 0) {
